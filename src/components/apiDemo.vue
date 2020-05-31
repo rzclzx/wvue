@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     send () {
-      this.$axios(this.$store.state.admin.getContractAllList).then(res => res)
+      this.$axios(this.$store.state.admin.getContractAllList).then(res => res);
     },
     getToken () {
       // 过期时间6天
