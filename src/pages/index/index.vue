@@ -1,6 +1,10 @@
 <template>
   <div class="app-container">
-    123
+    <el-button 
+      size="mini"
+      type="primary"
+      @click="showExcel"
+    >excel预览</el-button>
   </div>
 </template>
 
@@ -23,7 +27,11 @@ export default {
     
   },
   methods: {
-    
+    showExcel () {
+      this.$axios(this.$store.state.utils.getExcel).then(res => {
+        console.log(res)
+      })
+    }
   },
   computed: {
     

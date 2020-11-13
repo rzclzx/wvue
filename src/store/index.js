@@ -5,11 +5,14 @@ import Vuex from 'vuex'
 import admin from './modules/api/admin'
 // data
 import user from './modules/user'
+
+import utils from './modules/api/utils'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
     admin,
-    user
+    user,
+    utils
   }
 })

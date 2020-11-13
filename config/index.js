@@ -11,13 +11,14 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      // '/sell': {
-      //   // 注意设置代理后，axios代码设置为/，不要加base域名
-      //   target: 'http://localhost:8080',  
-      //   //pathRewrite: {'^/sell' : '/sell'},
-      //   changeOrigin: true     // target是域名的话，需要这个参数，
-      //   //secure: false,          // 设置支持https协议的代理
-      // }
+      '/an-ti/': {
+        target: 'http://152.136.23.178:7972',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/decision-engine': '/'
+        },
+        secure: false, 
+      }
     },
 
     // Various Dev Server settings
