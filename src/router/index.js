@@ -4,10 +4,16 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
       name: 'Index',
+      component: resolve => require(['@/pages/index/index'], resolve)
+    },
+    {
+      path: '/',
+      name: 'trade',
       component: resolve => require(['@/pages/trade/index'], resolve)
     },
     {
