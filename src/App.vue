@@ -10,7 +10,7 @@ export default {
 }
 </script>
 
-<style lang="less">
-  @import "./assets/css/public";
+<style lang="less" scoped>
+  @import "~@/styles/public.less";
 </style>
 

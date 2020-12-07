@@ -2,8 +2,9 @@
 // Template version: 1.3.1
 // see http://vuejs-templates.github.io/webpack for documentation.
 
-const path = require('path')
+const config = require('../config/')
 
+const path = require('path')
 module.exports = {
   dev: {
 
@@ -11,14 +12,22 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/an-ti/': {
-        target: 'http://152.136.23.178:7972',
+      '/base-url/': {
+        target: 'http://localhost:8000',
         changeOrigin: true,
         pathRewrite: {
-          '^/decision-engine': '/'
+          '^/base-url': '/'
         },
-        secure: false, 
-      }
+        // secure: false, 
+      },
+//       '/user-url/': {
+//         target: 'http://152.136.23.178:7972',
+//         changeOrigin: true,
+//         pathRewrite: {
+//           '^/user-url': '/'
+//         },
+//         // secure: false, 
+//       }
     },
 
     // Various Dev Server settings

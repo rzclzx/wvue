@@ -9,17 +9,7 @@ export default new Router({
     {
       path: '/',
       name: 'Index',
-      component: resolve => require(['@/pages/index/index'], resolve)
-    },
-    {
-      path: '/',
-      name: 'trade',
-      component: resolve => require(['@/pages/trade/index'], resolve)
-    },
-    {
-      path: '/CookiePathTest',
-      name: 'CookiePathTest',
-      component: resolve => require(['@/pages/CookiePathTest/index'], resolve)
+      component: resolve => require(['@/views/main/index'], resolve)
     }
   ]
 })
