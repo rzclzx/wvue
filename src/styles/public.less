@@ -1,3 +1,33 @@
-.app-container {
-  margin: 20px 20px;
+@gray0:#FAFAFA;
+.flex(@item,@iswrap,@justify,@align){
+  display: flex;
+  flex-flow: @item @iswrap;
+  justify-content: @justify;
+  align-items: @align;
 }
+.flex(@justify,@align){
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: @justify;
+  align-items: @align;
+}
+.flex-start-center{
+  .flex(flex-start, center);
+}
+.flex-wrap-center{
+  .flex(row, wrap, flex-start, center);
+}
+.flex-center-center{
+  .flex(center, center);
+}
+.flex-between-center{
+  .flex(space-between, center);
+}
+.flex-around-center{
+  .flex(space-around, center);
+}
+.flex-end-center{
+  .flex(flex-end, center);
+}
+
+
