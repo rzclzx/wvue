@@ -6,7 +6,6 @@
 
 <script>
 import { getDepts } from '@/api/login'
-import { add } from '@/api/user'
 export default {
   data() {
     return {
@@ -17,8 +16,7 @@ export default {
     
   },
   created() {
-    getDepts()
-    add()
+    
   },
   methods: {
 

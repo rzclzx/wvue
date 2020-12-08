@@ -1,4 +1,4 @@
-import request from './axios/base'
+import request from './axios/baseAxios'
 
 export function getDepts() {
   return request({
