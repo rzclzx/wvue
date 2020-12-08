@@ -13,6 +13,10 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 const env = require('../config/test.env')
 
+function resolve(dir) {
+  return path.join(__dirname, '..', dir)
+}
+
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({
@@ -63,6 +67,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: config.build.index,
       template: 'index.html',
+      favicon: resolve('favicon.ico'),
       inject: true,
       minify: {
         removeComments: true,
