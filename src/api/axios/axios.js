@@ -1,6 +1,6 @@
 // axios配置
 import axios from 'axios'
-import Cookies from 'js-cookie';
+import Cookies from 'js-cookie'
 
 function init(url) {
   // 配置默认请求头
@@ -16,56 +16,84 @@ function init(url) {
 
   // 拿到初始化请求函数
   const http = axios.create();
-  http.defaults.baseURL = url;
-  // 请求拦截器
-  http.interceptors.request.use(function(config){
-    // 在请求发出之前进行一些操作
-    // console.log(
-    //     '%c 请求地址: ','background:#333;color:#bada55',
-    //     config.baseURL + config.url,
-    //     '   method:' + config.method,
-    //     '   data:', config.data
-    // )
-    return config;
-  },function(err){
-    // Do something with request error
-    //return Promise.reject(err);
-  });
-  // 响应拦截器
-  http.interceptors.response.use(function(res){
-    // 实际应用完善此逻辑，根据返回码做拦截
 
-    // if (res.data.code === 'MGT00000') {
-    //     return res.data
-    // } else {
-    //     const config = {
-    //         title: getText('错误'),
-    //         content: res.data.code + ': ' + getText(`errorCode['${res.data.code}']`),
-    //     };
-    //     if (res.data.code === 'MGT00136') {
-    //         // 首次登陆,修改密码
-    //         return res.data
-    //     }
-    //     if (res.data.code === 'MGT00135') {
-    //         // 首次登陆，绑定ga
-    //         return res.data
-    //     }
-    //     if (res.data.code === 'MGT00019') {
-    //         // 如果token过期则跳到登陆页面
-    //         config.onOk = () =>{
-    //             Cookies.remove('user')
-    //             localStorage.userData = null
-    //             Cookies.remove('token');
-    //             refresh()
-    //             window.location.href = '/';
-    //         }
-    //     }
-    //     return Promise.reject(res.data.code);
-    // }
-  },function(err){
-    // Do something with response error
-    //return Promise.reject(err);
-  })
+  http.defaults.baseURL = url;
+
+
+  // 请求拦截器
+  http.interceptors.request.use(
+    config => {
+      if (Cookies.get('token')) {
+        config.headers['Authorization'] = Cookies.get('token') // 让每个请求携带自定义token 请根据实际情况自行修改
+      }
+      config.headers['Content-Type'] = 'application/json'
+      return config
+    },
+    error => {
+      Promise.reject(error)
+    }
+  )
+
+
+  // 响应拦截器
+  http.interceptors.response.use(
+    response => {
+      return response.data
+    },
+    error => {
+      // 兼容blob下载出错json提示
+      if (error.response.data instanceof Blob && error.response.data.type.toLowerCase().indexOf('json') !== -1) {
+        const reader = new FileReader()
+        reader.readAsText(error.response.data, 'utf-8')
+        reader.onload = function(e) {
+          const errorMsg = JSON.parse(reader.result).message
+          Notification.error({
+            title: errorMsg,
+            duration: 5000
+          })
+        }
+      } else {
+        let code = 0
+        try {
+          code = error.response.data.status
+        } catch (e) {
+          if (error.toString().indexOf('Error: timeout') !== -1) {
+            Notification.error({
+              title: '网络请求超时',
+              duration: 5000
+            })
+            return Promise.reject(error)
+          }
+        }
+        console.log(code)
+        if (code) {
+          if (code === 401) {
+            store.dispatch('LogOut').then(() => {
+              // 用户登录界面提示
+              Cookies.set('point', 401)
+              location.reload()
+            })
+          } else if (code === 403) {
+            router.push({ path: '/401' })
+          } else {
+            const errorMsg = error.response.data.message
+            if (errorMsg !== undefined) {
+              Notification.error({
+                title: errorMsg,
+                duration: 5000
+              })
+            }
+          }
+        } else {
+          Notification.error({
+            title: '接口请求失败',
+            duration: 5000
+          })
+        }
+      }
+      return Promise.reject(error)
+    }
+  )
 
   // 获取token初始化headers
   refresh(Cookies.get('token'))

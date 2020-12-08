@@ -1,8 +1,16 @@
 import request from './axios/baseAxios'
 
-export function getDepts() {
+export function getCodeImg () {
   return request({
-    url: 'api/menus/build',
+    url: 'auth/code',
     method: 'get'
+  })
+}
+
+export function login(data) {
+  return request({
+    url: 'auth/login',
+    method: 'post',
+    data
   })
 }
