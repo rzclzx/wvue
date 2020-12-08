@@ -1,7 +1,7 @@
 <template>
   <div class="login" :style="`background-image:url('${back}')`">
     <el-card class="login-form">
-
+      <div>{{ name.title }}</div>
     </el-card>
   </div>
 </template>
@@ -9,9 +9,11 @@
 <script>
 import { getDepts } from '@/api/login'
 import Background from '@/assets/images/back.jpg'
+import name from '@/assets/config/name'
 export default {
   data() {
     return {
+      name,
       back: Background
     }
   },
