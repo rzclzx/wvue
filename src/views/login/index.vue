@@ -114,7 +114,6 @@ export default {
             Cookies.set('token', res.token || '', {
               expires: 7
             })
-            this.$store.commit('SET_USER', res.user || {})
             this.$router.push({ path: this.redirect || '/' })
           }).catch(err => {
             this.getCode();

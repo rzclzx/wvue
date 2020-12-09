@@ -19,9 +19,14 @@ const router = new Router({
       hidden: true
     },
     {
-      path: '/',
+      path: '/dashboard',
       name: 'Index',
       component: resolve => require(['@/views/main/index'], resolve)
+    },
+    {
+      path: '*', 
+      redirect: '/dashboard', 
+      hidden: true
     }
   ]
 })
@@ -43,20 +48,17 @@ router.beforeEach((to, from, next) => {
       next({ path: '/' })
       NProgress.done()
     } else {
-      if (store.state.user.user.roles.length === 0) { // 判断当前用户是否已拉取完user_info信息
-        store.dispatch('GetInfo').then(() => { // 拉取user_info
-          // 动态路由，拉取菜单
-          loadMenus(next, to)
+      if (!store.state.user.userIsInit) {
+        store.dispatch('GetInfo').then(res => {
+          store.dispatch('LoadMenus').then(menus => {
+            router.addRoutes(menus)
+            next({ ...to, replace: true })
+          })
         }).catch(() => {
           store.dispatch('LogOut').then(() => {
             location.reload() // 为了重新实例化vue-router对象 避免bug
           })
         })
-      // 登录时未拉取 菜单，在此处拉取
-      } else if (store.getters.loadMenus) {
-        // 修改成false，防止死循环
-        store.dispatch('updateLoadMenus')
-        loadMenus(next, to)
       } else {
         next()
       }

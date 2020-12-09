@@ -13,7 +13,7 @@ let mutations = {
 }
 
 let actions = {
-  setUserInfo (context, payload) {
+  setUserInfo ({ commit }, data) {
     // 处理异步或请求
   }
 }
