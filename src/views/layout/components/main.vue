@@ -1,6 +1,6 @@
 <template>
   <transition name="fade-transform" mode="out-in">
-    <keep-alive>
+    <keep-alive :include="caches">
       <router-view :key="key" />
     </keep-alive>
   </transition>
@@ -10,13 +10,10 @@
 export default {
   data() {
     return {
-      
+      caches: []//要缓存的组件name名称
     }
   },
   computed: {
-    cachedViews() {
-      return {}
-    },
     key() {
       return this.$route.path
     }
