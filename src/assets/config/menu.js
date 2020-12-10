@@ -1,16 +1,5 @@
 export default [
   {
-    path: '*', 
-    redirect: '/dashboard', 
-    hidden: true
-  },
-  {
-    path: '/login',
-    meta: { title: '登录', noCache: true },
-    component: resolve => require(['@/views/login/index'], resolve),
-    hidden: true
-  },
-  {
     name: '首页',
     path: '/',
     component: 'Layout',
@@ -58,5 +47,10 @@ export default [
         }
       }
     ]
+  },
+  {
+    path: '*', 
+    redirect: '/dashboard', 
+    hidden: true
   }
 ]

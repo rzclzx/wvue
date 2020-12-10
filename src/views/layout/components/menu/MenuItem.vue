@@ -9,12 +9,13 @@
         v-for="item in menu.children"
         :key="item.path"
         :index="item.path"
+        @click="go(item.path)"
       >
         <span>●</span>
         <span>{{ item.meta.title }}</span>
       </el-menu-item>
     </el-submenu>
-    <el-menu-item v-else :index="menu.path">
+    <el-menu-item v-else :index="menu.path" @click="go(menu.children[0].path)">
       <i :class="menu.meta.icon"></i>
       <span slot="title">{{ menu.meta.title }}</span>
     </el-menu-item>
@@ -36,7 +37,9 @@ export default {
     
   },
   methods: {
-
+    go (path) {
+      this.$router.push(`${this.menu.path}/${path}`)
+    }
   }
 }
 </script>

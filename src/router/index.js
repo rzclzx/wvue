@@ -12,7 +12,14 @@ const router = new Router({
   mode: 'history',
   scrollBehavior: () => ({ y: 0 }),// 刷新白屏问题
   base: '/',
-  routes: []
+  routes: [
+    {
+      path: '/login',
+      meta: { title: '登录', noCache: true },
+      component: (resolve) => require(['@/views/login/index'], resolve),
+      hidden: true
+    }
+  ]
 })
 
 // 路由守卫

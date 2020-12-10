@@ -1,8 +1,10 @@
 @fontcolor: #707070;
 @menuback: #1F335C;
-@menubackbox: rgba(15, 19, 36, .4);
 @menubackactive: #0F1324;
 @blue: #409EFF;
+@linkcolor: #3188C9;
+@linkcoloractive: #005999;
+@appheaderback: #fff;
 
 .flex(@item,@iswrap,@justify,@align){
   display: flex;
@@ -38,8 +40,18 @@
   .flex(flex-end, center);
 }
 
+.app-container {
+  padding: 50px 10px;
+}
+
+.link {
+  color: @linkcolor!important;
+  cursor: pointer;
+}
 .pointer {
   cursor: pointer;
 }
-
+.link:hover {
+  color: @linkcoloractive!important;
+}
 

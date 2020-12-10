@@ -4,7 +4,8 @@
       <div class="logo">{{ name.title }}</div>
       <Menu />
     </div>
-    <div>
+    <div style="width:100%">
+      <Header />
       <Main />
     </div>
   </div>
@@ -14,10 +15,12 @@
 import Menu from './components/menu/index'
 import Main from './components/main'
 import name from '@/assets/config/name'
+import Header from './components/header/index'
 export default {
   components: {
     Menu,
-    Main
+    Main,
+    Header
   },
   data() {
     return {
