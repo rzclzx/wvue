@@ -1,7 +1,5 @@
 import init from './axios'
 
-const http = init(process.env.USER_URL);
+const service = init(process.env.USER_URL);
 
-export const refresh = http.refresh;
-
-export default http.send;
+export default service;

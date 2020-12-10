@@ -5,6 +5,12 @@ export default [
     hidden: true
   },
   {
+    path: '/login',
+    meta: { title: '登录', noCache: true },
+    component: resolve => require(['@/views/login/index'], resolve),
+    hidden: true
+  },
+  {
     name: '首页',
     path: '/',
     component: 'Layout',
@@ -32,7 +38,7 @@ export default [
   },
   {
     name: '系统管理',
-    path: 'system',
+    path: '/system',
     hidden: false,
     component: 'Layout',
     meta: {
@@ -43,7 +49,7 @@ export default [
     children: [
       {
         name: '用户管理',
-        path: 'system',
+        path: 'user',
         hidden: false,
         component: 'system/user/index',
         meta: {

@@ -1,27 +1,18 @@
 // axios配置
 import axios from 'axios'
+import { Notification } from 'element-ui'
+import store from '@/store'
 import Cookies from 'js-cookie'
 
 function init(url) {
-  // 配置默认请求头
-  let defaulHeaders = {
-    'Content-Type': 'application/json;charset=UTF-8',
-    requestId: String(Math.random()).replace('0.',''),
-    withCredentials: true
-  };
+  // 创建axios实例
+  const service = axios.create({
+    baseURL: url,
+    timeout: 1200000 // 请求超时时间
+  })
 
-  function refresh (token) {
-    defaulHeaders.token = token ? token : ''
-  }
-
-  // 拿到初始化请求函数
-  const http = axios.create();
-
-  http.defaults.baseURL = url;
-
-
-  // 请求拦截器
-  http.interceptors.request.use(
+  // request拦截器
+  service.interceptors.request.use(
     config => {
       if (Cookies.get('token')) {
         config.headers['Authorization'] = Cookies.get('token') // 让每个请求携带自定义token 请根据实际情况自行修改
@@ -34,9 +25,8 @@ function init(url) {
     }
   )
 
-
-  // 响应拦截器
-  http.interceptors.response.use(
+  // response 拦截器
+  service.interceptors.response.use(
     response => {
       return response.data
     },
@@ -69,12 +59,10 @@ function init(url) {
         if (code) {
           if (code === 401) {
             store.dispatch('LogOut').then(() => {
-              // 用户登录界面提示
-              Cookies.set('point', 401)
               location.reload()
             })
           } else if (code === 403) {
-            router.push({ path: '/401' })
+            location.reload()
           } else {
             const errorMsg = error.response.data.message
             if (errorMsg !== undefined) {
@@ -95,34 +83,7 @@ function init(url) {
     }
   )
 
-  // 获取token初始化headers
-  refresh(Cookies.get('token'))
-
-  // 如果代理需要改变url过滤，则完善次方法
-  function pathReplace (url) {
-    //如果需要则在这里过滤url代理前缀
-    return url
-  }
-
-  function send (option) {
-    if (!option || !option.method || !option.url) {
-        console.error('缺少axios请求配置（method、url、system）')
-        return
-    }
-    let url = pathReplace(option.url)
-    return http({
-        url: url,
-        method: option.method,
-        headers: option.headers ? {...defaulHeaders, ...option.headers} : defaulHeaders,
-        params: option.params || {},
-        data: option.data || {}
-    })
-  }
-
-  return {
-    send: send,
-    refresh: refresh
-  }
+  return service
 }
 
 export default init

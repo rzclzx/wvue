@@ -5,21 +5,14 @@ import 'nprogress/nprogress.css'
 import Cookies from 'js-cookie'
 import name from '@/assets/config/name'
 import store from '@/store'
-import Layout from '@/views/layout'
 
 Vue.use(Router)
 
 const router = new Router({
   mode: 'history',
   scrollBehavior: () => ({ y: 0 }),// 刷新白屏问题
-  routes: [
-    {
-      path: '/login',
-      meta: { title: '登录', noCache: true },
-      component: resolve => require(['@/views/login/index'], resolve),
-      hidden: true
-    }
-  ]
+  base: '/',
+  routes: []
 })
 
 // 路由守卫

@@ -1,5 +1,5 @@
 'use strict'
 module.exports = {
   NODE_ENV: '"test"',
-  BASE_URL: '"base-url"',
+  BASE_URL: '"/base-url"',
 }
