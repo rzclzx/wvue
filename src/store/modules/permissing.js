@@ -1,3 +1,4 @@
+import Layout from '@/views/layout/index'
 let state = {
   
 }

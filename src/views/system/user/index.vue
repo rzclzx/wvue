@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    main
+    user
   </div>
 </template>
 

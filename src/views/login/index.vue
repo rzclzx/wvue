@@ -53,7 +53,10 @@
         type="primary"
         style="width:100%;margin-top:10px"
         @click="login"
-      >登录</el-button>
+      >
+        <span v-if="!loading">登 录</span>
+        <span v-else>登 录 中...</span>
+      </el-button>
     </el-card>
   </div>
 </template>
@@ -81,7 +84,8 @@ export default {
       },
       codeUrl: '',
       uuid: '',
-      redirect: undefined
+      redirect: undefined,
+      loading: false
     }
   },
   computed: {
@@ -110,12 +114,14 @@ export default {
         if (valid) {
           this.form.uuid = this.uuid;
           this.form.password = encrypt(this.form.password);
+          this.loading = true;
           login(this.form).then(res => {
             Cookies.set('token', res.token || '', {
               expires: 7
             })
             this.$router.push({ path: this.redirect || '/' })
           }).catch(err => {
+            this.loading = false;
             this.getCode();
           })
         }

@@ -5,6 +5,7 @@ import 'nprogress/nprogress.css'
 import Cookies from 'js-cookie'
 import name from '@/assets/config/name'
 import store from '@/store'
+import Layout from '@/views/layout'
 
 Vue.use(Router)
 
@@ -16,16 +17,6 @@ const router = new Router({
       path: '/login',
       meta: { title: '登录', noCache: true },
       component: resolve => require(['@/views/login/index'], resolve),
-      hidden: true
-    },
-    {
-      path: '/dashboard',
-      name: 'Index',
-      component: resolve => require(['@/views/main/index'], resolve)
-    },
-    {
-      path: '*', 
-      redirect: '/dashboard', 
       hidden: true
     }
   ]

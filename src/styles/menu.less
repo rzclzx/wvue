@@ -1,0 +1,119 @@
+@import './public.less';
+.sidebar-container {
+  background-color: @menuback;
+  transition: width 0.28s;
+  width: 195px!important;
+  height: 100vh;
+  z-index: 1001;
+  overflow: hidden;
+  //reset element-ui css
+  .horizontal-collapse-transition {
+    transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
+  }
+  .el-scrollbar__bar.is-vertical{
+    top: 0;
+    right: 0px;
+  }
+  .scrollbar-wrapper {
+    overflow-x: hidden!important;
+    .el-scrollbar__view {
+      height: 100%;
+    }
+  }
+  .is-horizontal {
+    display: none;
+  }
+  a {
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+  }
+  .svg-icon {
+    margin-right: 16px;
+  }
+  .el-menu {
+    border: none;
+    height: 100%;
+    width: 100% !important;
+  }
+  .is-active > .el-submenu__title{
+    color: #f4f4f5!important;
+  }
+}
+.hideSidebar {
+  .sidebar-container {
+    width: 36px !important;
+  }
+  .main-container {
+    margin-left: 36px;
+  }
+  .submenu-title-noDropdown {
+    padding-left: 10px !important;
+    position: relative;
+    .el-tooltip {
+      padding: 0 10px !important;
+    }
+  }
+  .el-submenu {
+    overflow: hidden;
+    &>.el-submenu__title {
+      padding-left: 10px !important;
+      .el-submenu__icon-arrow {
+        display: none;
+      }
+    }
+  }
+  .el-menu--collapse {
+    .el-submenu {
+      &>.el-submenu__title {
+        &>span {
+          height: 0;
+          width: 0;
+          overflow: hidden;
+          visibility: hidden;
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
+.sidebar-container .nest-menu .el-submenu>.el-submenu__title,
+.sidebar-container .el-submenu .el-menu-item {
+  min-width: 195px !important;
+  background-color: @menubackbox!important;
+  &:hover {
+    background-color: @menubackactive!important;
+  }
+}
+
+.sidebar-container .el-submenu .is-active {
+  background-color: @menubackactive!important;
+}
+
+.el-menu--collapse .el-menu .el-submenu {    
+  min-width: 195px !important;
+}
+
+.menu-wrapper .is-active {
+  background-color: @menubackactive!important;
+}
+
+.withoutAnimation {
+  .main-container,
+  .sidebar-container {
+    transition: none;
+  }
+}
+
+.submenu-pre {
+  margin-right: 5px;  
+  font-size: 12px;
+}
+
+.el-menu--vertical{
+  & >.el-menu{
+    .svg-icon{
+      margin-right: 16px;
+    }
+  }
+}
