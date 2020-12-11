@@ -1,12 +1,13 @@
 <template>
   <el-menu
-    :show-timeout="200"
     :default-active="$route.path"
+    :show-timeout="200"
     :unique-opened="true"
     mode="vertical"
     background-color="#1F335C"
     text-color="#fff"
     active-text-color="#fff"
+    @select="go"
   >
     <MenuItem 
       v-for="menu in menus"
@@ -36,7 +37,9 @@ export default {
     
   },
   methods: {
-
+    go (path) {
+      this.$router.push(path);
+    }
   }
 }
 </script>
