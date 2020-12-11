@@ -8,7 +8,6 @@ import { bus } from '@/utils/bus'
 import name from '@/assets/config/name'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/styles/public.less'
-import '@/styles/menu.less'
 import '@/styles/element.less'
 
 document.title = name.title

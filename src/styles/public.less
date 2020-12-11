@@ -5,6 +5,9 @@
 @linkcolor: #3188C9;
 @linkcoloractive: #005999;
 @appheaderback: #fff;
+@scrollbarthumb: #bebebe;
+@scrollbartrack: rgba(0, 0, 0, 0.2);
+@scrollbartrackback: #fff;
 
 .flex(@item,@iswrap,@justify,@align){
   display: flex;
@@ -62,5 +65,41 @@
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.row-scroll {
+  overflow-y: scroll!important;
+  overflow-x: hidden!important;
+}
+.row-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+.row-scroll::-webkit-scrollbar-thumb {
+  // 方块
+  border-radius: 5px;
+  background: @scrollbarthumb;
+}
+.row-scroll::-webkit-scrollbar-track {
+  // 轨道
+  border-radius: 5px;
+  background: @scrollbartrackback;
+}
+
+.column-scroll {
+  overflow-y: hidden!important;
+  overflow-x: scroll!important;
+}
+.column-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+.column-scroll::-webkit-scrollbar-thumb {
+  // 方块
+  border-radius: 6px;
+  background: @scrollbarthumb;
+}
+.column-scroll::-webkit-scrollbar-track {
+  // 轨道
+  border-radius: 6px;
+  background: @scrollbartrackback;
 }
 
