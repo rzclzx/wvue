@@ -1,12 +1,14 @@
 @import './public.less';
 
 .sidebar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
   background-color: @menuback;
   transition: width 0.28s;
   width: 195px!important;
   height: 100vh;
   z-index: 1001;
-  flex-shrink: 0;
   overflow: hidden;
   .el-menu {
     border: none;
@@ -34,4 +36,19 @@
 }
 .el-dialog__body::-webkit-scrollbar-thumb:hover {
   background: @fontcolor;
+}
+
+.el-table__body-wrapper::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  height: 8px;
+}
+.el-table__body-wrapper::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  border-radius: 6px;
+  background: @scrollbarthumb;
+}
+.el-table__body-wrapper::-webkit-scrollbar-track {
+  // 轨道
+  border-radius: 6px;
+  background: @scrollbartrackback;
 }

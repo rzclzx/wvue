@@ -8,6 +8,10 @@
 @scrollbarthumb: #bebebe;
 @scrollbartrack: rgba(0, 0, 0, 0.2);
 @scrollbartrackback: #fff;
+@headerback: #fff;
+@inputbordercolor: rgb(220, 223, 230);
+@inputradius: 4px;
+@cardradius: 5px;
 
 .flex(@item,@iswrap,@justify,@align){
   display: flex;
@@ -44,7 +48,8 @@
 }
 
 .app-container {
-  padding: 50px 10px;
+  padding: 10px;
+  overflow: hidden;
 }
 
 .link {
@@ -101,5 +106,59 @@
   // 轨道
   border-radius: 6px;
   background: @scrollbartrackback;
+}
+
+.table-header {
+  background-color: @headerback;
+  border: solid 1px @inputbordercolor;
+  border-bottom: none;
+  height: 40px;
+  // border-bottom: solid 1px $yellow;
+  border-top-left-radius: @inputradius;
+  border-top-right-radius: @inputradius;
+  padding: 0 10px 0 20px;
+}
+.table-title {
+  font-size: 14px;
+  font-weight: 600;
+  position: relative;
+}
+.table-title::before {
+  content: "";
+  width: 3px;
+  height: 1em;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: -6px;
+  background-color: #3188C9;
+}
+
+.head-container {
+  border-radius: @cardradius;
+  padding: 0 10px 0 0;
+}
+
+.header-item {
+  .flex-start-center;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  .label {
+      flex-shrink: 0;
+      margin-right: 5px;
+  }
+  input {
+      width: 185px;
+  }
+  .sell-input {
+      input {
+          width: 100%!important;
+      }
+  }
+  .vue-treeselect {
+      width: 185px;
+      margin-bottom: 0!important;
+  }
 }
 

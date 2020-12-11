@@ -47,6 +47,9 @@ export default {
 
 <style lang="less" scoped>
   @import '~@/styles/public';
+  .row-scroll::-webkit-scrollbar {
+    width: 0px;
+  }
   .row-scroll::-webkit-scrollbar-thumb {
     background: @menubackactive;
   }
