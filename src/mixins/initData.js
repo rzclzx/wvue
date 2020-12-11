@@ -1,5 +1,4 @@
 import { initData } from '@/api/data'
-import PageContainer from '@/components/PageContainer'
 
 export default {
   data() {
@@ -13,13 +12,34 @@ export default {
       params: {},
       paramsSerializer: null,
       query: {},
-      time: 50,
       isAdd: false,
       downloadLoading: false,
       columns: JSON.parse(localStorage.columns)
     }
   },
-  components: { PageContainer },
+  computed: {
+    dict () {
+      return this.$store.state.app.dict || {}
+    },
+    cellStyle () {
+      if (this.prop) {
+        return {
+          padding: (this.columns[this.prop].height ? this.columns[this.prop].height : 6) + 'px 0!important'
+        }
+      } else {
+        return {}
+      }
+    },
+    headerCellStyle () {
+      if (this.prop) {
+        return {
+          padding: (this.columns[this.prop].height ? this.columns[this.prop].height : 6) + 'px 0!important'
+        }
+      } else {
+        return {}
+      }
+    }
+  },
   methods: {
     async init() {
       if (!await this.beforeInit()) {
@@ -31,24 +51,9 @@ export default {
           if (!this.params[i] && this.params[i] !== 0) delete this.params[i]
         }
         initData(this.url, this.params, this.paramsSerializer).then(res => {
-          if (res.searchCount === true) {
-            this.total = res.total
-            this.data = res.records || []
-          } else if (res.data) {
-            if (res.data.records) {
-              this.data = res.data.records || []
-              this.total = res.data.total
-            } else {
-              this.data = res.data || []
-              this.total = res.total
-            }
-          } else {
-            this.total = res.totalElements
-            this.data = res.content || []
-          }
-          setTimeout(() => {
-            this.loading = false
-          }, this.time)
+          this.total = res.totalElements;
+          this.data = res.content || [];
+          this.loading = false;
           resolve(res)
         }).catch(err => {
           this.loading = false
@@ -91,6 +96,11 @@ export default {
     },
     reset () {
       this.query = {}
+    },
+    headerDrag (a, b, c, d) {
+      if (this.prop) {
+        return this.columnsWidthChange(a, b, c, d, this.prop);
+      }
     }
   }
 }

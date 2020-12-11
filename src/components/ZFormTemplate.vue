@@ -13,32 +13,19 @@
       :rules="rules" 
       size="small" 
       label-width="90px"
-      style="width: 90%"
+      style="width: 100%"
     >
-      <el-form-item label="名单值" prop="value">
+      <el-form-item label="名称" prop="nickName">
         <el-input 
           size="mini" 
-          v-model="form.value" 
-          style="width:250px" />
-      </el-form-item>
-      <el-form-item label="类型" prop="type">
-        <el-select 
-          clearable 
-          size="mini"
-          v-model="form.type"
-        >
-          <el-option
-            v-for="item in dict.aaa ? dict.aaa.list : []"
-            :key="item.id"
-            :label="item.label"
-            :value="item">
-          </el-option>
-        </el-select>
+          v-model="form.nickName" 
+          style="width:250px" 
+        />
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
       <el-button size="mini" type="text" @click="cancel">取消</el-button>
-      <el-button size="mini" :loading="loading" type="primary" @click="doSubmit">确认</el-button>
+      <el-button size="mini" type="primary" @click="doSubmit">确认</el-button>
     </div>
   </el-dialog>
 </template>
@@ -46,19 +33,12 @@
 <script>
 import { add, edit } from '@/api/user';
 export default {
-  components: {},
-  props: {
-    isAdd: {
-      type: Boolean,
-      required: true
-    }
-  },
+  props: ['isAdd'],
   created() {
     
   },
   data() {
     return {
-      loading: false, 
       dialog: false,
       form: {},
       rules: {
@@ -96,10 +76,9 @@ export default {
           type: 'success',
           duration: 2500
         })
-        this.loading = false
         this.$parent.init()
       }).catch(err => {
-        this.loading = false
+        console.log(err)
       })
     },
     doEdit() {
@@ -110,10 +89,9 @@ export default {
           type: 'success',
           duration: 2500
         })
-        this.loading = false
         this.$parent.init()
       }).catch(err => {
-        this.loading = false
+        console.log(err)
       })
     },
     resetForm () {

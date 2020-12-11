@@ -37,6 +37,22 @@
 .el-dialog__body::-webkit-scrollbar-thumb:hover {
   background: @fontcolor;
 }
+.el-dialog__title {
+  padding-left: 6px;
+  font-weight: bolder;
+  position: relative;
+  font-size: 16px;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    height: .9em;
+    width: 3px;
+    transform: translateY(-50%);
+    background: @buttonback;
+  }
+}
 
 .el-table__body-wrapper::-webkit-scrollbar {
   /*滚动条整体样式*/
@@ -51,4 +67,15 @@
   // 轨道
   border-radius: 6px;
   background: @scrollbartrackback;
+}
+
+.el-table__header th {
+  background-color: @tableheader;
+}
+.el-table__header th .cell {
+  color: @fontdeepcolor!important;
+  font-weight: bold;
+}
+.el-table__header .el-checkbox {
+  transform: translateX(-2px);
 }

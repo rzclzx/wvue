@@ -1,14 +1,21 @@
 @fontcolor: #707070;
+@fontdeepcolor: #36434d;
 @menuback: #1F335C;
 @menubackactive: #0F1324;
 @blue: #409EFF;
 @linkcolor: #3188C9;
 @linkcoloractive: #005999;
+@buttonback: #3188C9;
 @appheaderback: #fff;
 @scrollbarthumb: #bebebe;
 @scrollbartrack: rgba(0, 0, 0, 0.2);
 @scrollbartrackback: #fff;
 @headerback: #fff;
+@tableheader: #E8EEFB;
+@yellow: #FFAF00;
+@green: #5BFA5B;
+@red: #E95B39;
+@disback: #EFEFEF;
 @inputbordercolor: rgb(220, 223, 230);
 @inputradius: 4px;
 @cardradius: 5px;
@@ -120,7 +127,8 @@
 }
 .table-title {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: bold;
+  color: @fontdeepcolor;
   position: relative;
 }
 .table-title::before {
@@ -160,5 +168,13 @@
       width: 185px;
       margin-bottom: 0!important;
   }
+}
+
+.border {
+  border: solid 1px @inputbordercolor;
+  border-radius: @inputradius;
+  padding-left: 10px;
+  font-size: 12px;
+  color: @fontcolor;
 }
 

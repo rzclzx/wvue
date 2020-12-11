@@ -14,14 +14,6 @@
     <div v-else-if="item.length">
       {{ scope.row[item.length] && scope.row[item.length].length }}
     </div>
-    <div v-else-if="item.link">
-      <router-link 
-        :style="{color: scope.row.caseConcColor}" 
-        :to="`${item.link}/${type}/${scope.row.caseNo}`"
-      >
-        {{ item.dict && dict[item.dict] ? dict[item.dict].map[[scope.row[prop]]] : scope.row[prop] }}
-      </router-link>
-    </div>
     <div v-else-if="item.many">
       {{ $utils.manyList(item.many, scope.row) }}
     </div>
@@ -33,10 +25,9 @@
         {{ index == scope.row[prop].length - 1 ? val[item.list] : `${val[item.list]},` }}
       </span>
     </div>
-    <div 
-      v-else 
-      :class="{colorred: item.dict == 'enabled' && scope.row[prop] == '0'}"
-    >{{ item.dict && dict[item.dict] ? dict[item.dict].map[[scope.row[prop]]] : scope.row[prop] }}</div>
+    <div  v-else >
+      {{ item.dict && dict[item.dict] ? dict[item.dict].map[[scope.row[prop]]] : scope.row[prop] }}
+    </div>
   </div>
 </template>
 <script>

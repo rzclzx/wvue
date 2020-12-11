@@ -1,59 +1,49 @@
 // 表格信息配置项
 export const columns = {
   user: {
-    a: {
+    username: {
       show: true,
-      width: '300',
-      label: '登录名',
+      width: '',
+      label: '用户名',
       align: 'center'
     },
-    b: {
+    nickName: {
       show: true,
-      width: '300',
-      label: '登录名',
+      width: '',
+      label: '名称',
       align: 'center'
     },
-    c: {
+    gender: {
       show: true,
-      width: '300',
-      label: '登录名',
+      width: '',
+      label: '性别',
       align: 'center'
     },
-    d: {
+    phone: {
       show: true,
-      width: '300',
-      label: '登录名',
+      width: '',
+      label: '电话',
       align: 'center'
     },
-    e: {
+    email: {
       show: true,
-      width: '300',
-      label: '登录名',
+      width: '',
+      label: '邮箱',
       align: 'center'
     },
-    f: {
+    dept: {
       show: true,
-      width: '300',
-      label: '登录名',
-      align: 'center'
+      width: '',
+      label: '部门',
+      align: 'center',
+      child: 'name'
     },
-    g: {
+    createTime: {
       show: true,
-      width: '300',
-      label: '登录名',
-      align: 'center'
-    },
-    v: {
-      show: true,
-      width: '300',
-      label: '登录名',
-      align: 'center'
-    },
-    ff: {
-      show: true,
-      width: '300',
-      label: '登录名',
-      align: 'center'
+      width: '',
+      label: '创建时间',
+      align: 'center',
+      time: true
     },
   }
 }
