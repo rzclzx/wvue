@@ -8,29 +8,37 @@
                         style="border-bottom: solid 1px #F7F7F7; padding-bottom: 5px"
                     >
                         <div>字段设置</div>
-                        <i @click="setShowHeader" class="el-icon-s-tools link"></i>
+                        <i 
+                            @click="setShowHeader" 
+                            class="el-icon-s-tools link"
+                            style="font-size:16px"
+                        ></i>
                     </div>
                     <div
                         class="flex-between-center"
                         style="border-bottom: solid 1px #F7F7F7; padding-bottom: 5px; margin-top: 10px"
                     >
                         <div>恢复默认间距</div>
-                        <i @click="resetWidth" class="el-icon-refresh-left link"></i>
+                        <i 
+                            @click="resetWidth" 
+                            class="el-icon-refresh-left link"
+                            style="font-size:16px"
+                        ></i>
                     </div>
                     <div class="flex-between-center" style="margin-top: 10px; margin-bottom: 10px">
                         <div>行高设置</div>
                     </div>
                     <div class="flex-between-center">
                         <div @click="changeHeight('12')" class="link">
-                            <i class="el-icon-s-operation"></i>
+                            <i class="iconfont iconkuansong1copy"></i>
                             <span>宽松</span>
                         </div>
                         <div @click="changeHeight('6')" class="link">
-                            <i class="el-icon-s-operation"></i>
+                            <i class="iconfont iconhangjugao"></i>
                             <span>适中</span>
                         </div>
                         <div @click="changeHeight('0')" class="link">
-                            <i class="el-icon-s-operation"></i>
+                            <i class="iconfont iconhangjuai"></i>
                             <span>紧凑</span>
                         </div>
                     </div>

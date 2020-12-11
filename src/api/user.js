@@ -2,7 +2,7 @@ import request from './axios/baseAxios'
 
 export function add(data) {
   return request({
-    url: 'users',
+    url: 'api/users',
     method: 'post',
     data
   })
@@ -10,14 +10,14 @@ export function add(data) {
 
 export function del(id) {
   return request({
-    url: 'users/' + id,
+    url: 'api/users/' + id,
     method: 'delete'
   })
 }
 
 export function edit(data) {
   return request({
-    url: 'users',
+    url: 'api/users',
     method: 'put',
     data
   })

@@ -1,0 +1,35 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<!--
+2013-9-30: Created.
+-->
+<svg>
+<metadata>
+Created by iconfont
+</metadata>
+<defs>
+
+<font id="iconfont" horiz-adv-x="1024" >
+  <font-face
+    font-family="iconfont"
+    font-weight="500"
+    font-stretch="normal"
+    units-per-em="1024"
+    ascent="896"
+    descent="-128"
+  />
+    <missing-glyph />
+    
+    <glyph glyph-name="hangjugao" unicode="&#59223;" d="M789.12 554.24H234.88a42.88 42.88 0 0 0 0 85.76h554.24a42.88 42.88 0 0 0 0-85.76z m0-245.12H234.88a42.88 42.88 0 0 0 0 85.76h554.24a42.88 42.88 0 0 0 0-85.76z m0-245.12H234.88a42.88 42.88 0 1 0 0 85.76h554.24a42.88 42.88 0 0 0 0-85.76z"  horiz-adv-x="1024" />
+
+    
+    <glyph glyph-name="hangjuai" unicode="&#59241;" d="M232.704 704h558.592a40.704 40.704 0 0 0 0-81.472H232.704a40.704 40.704 0 1 0 0 81.472zM192 477.12c0 22.464 18.24 40.704 40.704 40.704h558.592a40.704 40.704 0 0 0 0-81.472H232.704A40.704 40.704 0 0 0 192 477.12z m0-372.416c0 22.528 18.24 40.768 40.704 40.768h558.592a40.704 40.704 0 1 0 0-81.472H232.704A40.704 40.704 0 0 0 192 104.704z m0 186.24c0 22.4 18.24 40.704 40.704 40.704h558.592a40.704 40.704 0 1 0 0-81.472H232.704A40.704 40.704 0 0 0 192 290.88z"  horiz-adv-x="1024" />
+
+    
+    <glyph glyph-name="kuansong1copy" unicode="&#58880;" d="M896 448l0-128-768 0L128 448zM896 128l0-128-768 0 0 128zM896 768l0-128-768 0L128 768z"  horiz-adv-x="1024" />
+
+    
+
+
+  </font>
+</defs></svg>

@@ -10,6 +10,7 @@ import columnsInit from '@/assets/config/columns'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/styles/public.less'
 import '@/styles/element.less'
+import '@/styles/icon/iconfont.css'
 
 columnsInit();
 
