@@ -112,10 +112,11 @@ export default {
     login () {
       this.$refs.form.validate(valid => {
         if (valid) {
-          this.form.uuid = this.uuid;
-          this.form.password = encrypt(this.form.password);
+          let form = this.$utils.clone(this.form);
+          form.uuid = this.uuid;
+          form.password = encrypt(form.password);
           this.loading = true;
-          login(this.form).then(res => {
+          login(form).then(res => {
             Cookies.set('token', res.token || '', {
               expires: 7
             })
