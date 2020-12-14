@@ -79,3 +79,26 @@
 .el-table__header .el-checkbox {
   transform: translateX(-2px);
 }
+
+.el-button--primary {
+  background-color: @buttonback;
+  border-color: @buttonback;
+}
+.el-button--text {
+  color: @linkcolor!important;
+}
+.el-button--text:hover {
+  color: @linkcoloractive!important;
+}
+.el-button--text {
+  width: auto!important;
+}
+
+.el-pager .active {
+  background-color: @buttonback!important;
+}
+.el-pagination.is-background button.btn-prev,
+.el-pagination.is-background button.btn-next,
+.el-pagination.is-background ul.el-pager li {
+  background-color: white;
+}
