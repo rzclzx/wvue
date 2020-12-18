@@ -1,14 +1,17 @@
 <template>
   <div class="app-header flex-between-center">
-    <el-breadcrumb separator="/" style="margin-left:10px">
-      <el-breadcrumb-item :to="{ path: '/dashboard' }">首页</el-breadcrumb-item>
-      <template v-for="item in $route.matched">
-        <el-breadcrumb-item 
-          :key="item.path" 
-          v-if="item.path && item.path != '/dashboard'"
-        >{{ item.name }}</el-breadcrumb-item>
-      </template>
-    </el-breadcrumb>
+    <div class="flex-start-center">
+      <el-breadcrumb separator="/" style="margin:0 20px 0 10px">
+        <el-breadcrumb-item :to="{ path: '/dashboard' }">首页</el-breadcrumb-item>
+        <template v-for="item in $route.matched">
+          <el-breadcrumb-item 
+            :key="item.path" 
+            v-if="item.path && item.path != '/dashboard'"
+          >{{ item.name }}</el-breadcrumb-item>
+        </template>
+      </el-breadcrumb>
+      <Tags />
+    </div>
     <div style="margin-right: 30px">
       <el-dropdown trigger="click">
         <div class="link flex-start-center">
@@ -25,9 +28,10 @@
 </template>
 
 <script>
+import Tags from '@/views/layout/components/tags'
 export default {
   components: {
-    
+    Tags
   },
   data() {
     return {
@@ -38,7 +42,7 @@ export default {
     
   },
   created() {
-    console.log(this.$route)
+    
   },
   methods: {
     logout() {

@@ -1,6 +1,6 @@
 export default [
   {
-    name: '首页',
+    name: '',
     path: '/',
     component: 'Layout',
     hidden: false,
@@ -14,12 +14,13 @@ export default [
     },
     children: [
       {
+        name: '首页',
         path: 'dashboard',
         hidden: false,
         component: 'main/index',
         meta: {
           title: '首页',
-          noCache: false
+          noCache: true
         }
       }
     ]
@@ -42,7 +43,7 @@ export default [
         component: 'system/user/index',
         meta: {
           title: '用户管理',
-          noCache: false
+          noCache: true
         }
       }
     ]

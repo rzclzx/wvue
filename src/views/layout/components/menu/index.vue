@@ -1,6 +1,6 @@
 <template>
   <el-menu
-    class="row-scroll"
+    class="column-scroll"
     :default-active="$route.path"
     :show-timeout="200"
     :unique-opened="true"
@@ -47,16 +47,16 @@ export default {
 
 <style lang="less" scoped>
   @import '~@/styles/public';
-  .row-scroll::-webkit-scrollbar {
+  .column-scroll::-webkit-scrollbar {
     width: 0px;
   }
-  .row-scroll::-webkit-scrollbar-thumb {
+  .column-scroll::-webkit-scrollbar-thumb {
     background: @menubackactive;
   }
-  .row-scroll::-webkit-scrollbar-track {
+  .column-scroll::-webkit-scrollbar-track {
     background: @menuback;
   }
-  .row-scroll {
+  .column-scroll {
     max-height: calc(100vh - 40px);
   }
 </style>
