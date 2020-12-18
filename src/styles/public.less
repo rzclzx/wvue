@@ -9,7 +9,6 @@
 @appheaderback: #fff;
 @scrollbarthumb: #bebebe;
 @scrollbartrack: rgba(0, 0, 0, 0.2);
-@scrollbartrackback: #fff;
 @headerback: #fff;
 @tableheader: #E8EEFB;
 @yellow: #FFAF00;
@@ -91,11 +90,6 @@
   border-radius: 5px;
   background: @scrollbarthumb;
 }
-.row-scroll::-webkit-scrollbar-track {
-  // 轨道
-  border-radius: 5px;
-  background: @scrollbartrackback;
-}
 
 .column-scroll {
   overflow-y: hidden!important;
@@ -108,11 +102,6 @@
   // 方块
   border-radius: 6px;
   background: @scrollbarthumb;
-}
-.column-scroll::-webkit-scrollbar-track {
-  // 轨道
-  border-radius: 6px;
-  background: @scrollbartrackback;
 }
 
 .table-header {

@@ -14,7 +14,6 @@ export default [
     },
     children: [
       {
-        name: 'dashboard',
         path: 'dashboard',
         hidden: false,
         component: 'main/index',

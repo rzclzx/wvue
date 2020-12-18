@@ -1,5 +1,14 @@
 <template>
-  <div class="app-header flex-end-center">
+  <div class="app-header flex-between-center">
+    <el-breadcrumb separator="/" style="margin-left:10px">
+      <el-breadcrumb-item :to="{ path: '/dashboard' }">首页</el-breadcrumb-item>
+      <template v-for="item in $route.matched">
+        <el-breadcrumb-item 
+          :key="item.path" 
+          v-if="item.path && item.path != '/dashboard'"
+        >{{ item.name }}</el-breadcrumb-item>
+      </template>
+    </el-breadcrumb>
     <div style="margin-right: 30px">
       <el-dropdown trigger="click">
         <div class="link flex-start-center">
@@ -29,10 +38,10 @@ export default {
     
   },
   created() {
-    
+    console.log(this.$route)
   },
   methods: {
-    logout () {
+    logout() {
       this.$store.dispatch('LogOut').then(res => {
         location.reload();
       })
