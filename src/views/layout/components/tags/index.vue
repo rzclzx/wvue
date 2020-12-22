@@ -2,7 +2,7 @@
   <div 
     ref="scrollContainer"
     class="row-scroll flex-start-center" 
-    style="max-width:50vw;padding-bottom:3px" 
+    style="padding-bottom: 3px;margin-left: 10px" 
     @wheel.prevent="handleScroll"
   >
     <el-tag

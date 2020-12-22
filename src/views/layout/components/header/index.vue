@@ -10,7 +10,6 @@
           >{{ item.name }}</el-breadcrumb-item>
         </template>
       </el-breadcrumb>
-      <Tags />
     </div>
     <div style="margin-right: 30px">
       <el-dropdown trigger="click">
@@ -28,11 +27,7 @@
 </template>
 
 <script>
-import Tags from '@/views/layout/components/tags'
 export default {
-  components: {
-    Tags
-  },
   data() {
     return {
       
@@ -66,6 +61,6 @@ export default {
     width: calc(100% - 195px);
     height: 40px;
     color: @fontcolor;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12), 0 0 3px 0 rgba(0, 0, 0, .04);
+    border-bottom: solid 1px @bordercolor;
   }
 </style>

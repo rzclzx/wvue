@@ -20,7 +20,7 @@ export default [
         component: 'main/index',
         meta: {
           title: '首页',
-          noCache: true
+          noCache: false
         }
       }
     ]
@@ -43,7 +43,7 @@ export default [
         component: 'system/user/index',
         meta: {
           title: '用户管理',
-          noCache: true
+          noCache: false
         }
       }
     ]
