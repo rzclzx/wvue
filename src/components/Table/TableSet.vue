@@ -29,23 +29,40 @@
             <div>行高设置</div>
           </div>
           <div class="flex-between-center">
-            <div @click="changeHeight('12')" class="link">
-              <i class="iconfont iconkuansong1copy"></i>
+            <div @click="changeHeight('12')" class="link flex-start-center">
+              <SvgIcon 
+                :name="'hangjianju1'" 
+                :styleObj="{
+                  fontSize: '16px',
+                  marginRight: '5px'
+                }" 
+              />
               <span>宽松</span>
             </div>
-            <div @click="changeHeight('6')" class="link">
-              <i class="iconfont iconhangjugao"></i>
+            <div @click="changeHeight('6')" class="link flex-start-center">
+              <SvgIcon 
+                :name="'hangjianju2'" 
+                :styleObj="{
+                  fontSize: '16px',
+                  marginRight: '5px'
+                }" 
+              />
               <span>适中</span>
             </div>
-            <div @click="changeHeight('0')" class="link">
-              <i class="iconfont iconhangjuai"></i>
+            <div @click="changeHeight('0')" class="link flex-start-center">
+              <SvgIcon 
+                :name="'hangjianju3'" 
+                :styleObj="{
+                  fontSize: '16px',
+                  marginRight: '5px'
+                }" 
+              />
               <span>紧凑</span>
             </div>
           </div>
         </div>
         <span slot="reference" class="link icons">
           <i class="el-icon-s-tools" style="font-size: 16px"></i>
-          <i class="iconfont icon-arrow-down-"></i>
         </span>
       </el-popover>
     </div>
