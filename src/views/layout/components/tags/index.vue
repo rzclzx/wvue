@@ -34,9 +34,11 @@ export default {
       handler(route) {
         if (!route.meta.noCache && !this.$utils.hasItem(route, this.tags, 'path', 'path')) {
           this.tags.push(route);
+          this.$emit('hasTagsChange', true);
         }
       },
-      deep: true
+      deep: true,
+      immediate: true
     }
   },
   computed: {
@@ -55,6 +57,12 @@ export default {
     },
     closeTag(tag) {
       this.tags = this.tags.filter(item => item.path !== tag.path);
+      if (tag.path === this.$route.path) {
+        this.$router.push('/');
+      }
+      if (this.tags.length === 0) {
+        this.$emit('hasTagsChange', false);
+      }
     }
   }
 }

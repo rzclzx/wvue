@@ -18,6 +18,24 @@ export default {
       return this.$route.path
     }
   },
+  watch: {
+    '$store.state.user.menus': {
+      handler(menus) {
+        this.caches = [];
+        menus.forEach(item => {
+          if (item.children) {
+            item.children.forEach(child => {
+              if (!child.meta.noCache) {
+                this.caches.push(child.path);
+              }
+            })
+          }
+        })
+      },
+      deep: true,
+      immediate: true
+    }
+  },
   created() {
     
   },

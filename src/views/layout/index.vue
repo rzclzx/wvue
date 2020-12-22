@@ -5,10 +5,10 @@
       <Menu />
     </div>
     <Header />
-    <div class="app-tags">
-      <Tags />
+    <div v-show="hasTags" class="app-tags">
+      <Tags ref="tags" @hasTagsChange="hasTagsChange" />
     </div>
-    <div class="app-main">
+    <div class="app-main" :style="{paddingTop: hasTags ? '70px' : '40px'}">
       <Main />
     </div>
   </div>
@@ -29,17 +29,17 @@ export default {
   },
   data() {
     return {
-      name
+      name,
+      hasTags: false
     }
-  },
-  computed: {
-    
   },
   created() {
     
   },
   methods: {
-
+    hasTagsChange(value) {
+      this.hasTags = value;
+    }
   }
 }
 </script>
@@ -55,7 +55,7 @@ export default {
     border-bottom: solid 1px #3b5f93;
   }
   .app-main {
-    padding: 70px 0 0 195px;
+    padding-left: 195px;
     position: relative;
     overflow: hidden;
   }

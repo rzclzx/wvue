@@ -1,16 +1,20 @@
 export default [
+  // 按下列格式字段顺序添加，（全部填写全量，保持一致）
+
+  // 首页无子菜单
   {
     name: '',
     path: '/',
-    component: 'Layout',
     hidden: false,
+    component: 'Layout',
     // redirect会将'/'定位到'/dashboard'
     redirect: '/dashboard',
+    // 无子菜单
     single: true,
     meta: {
       icon: 'el-icon-s-operation',
       title: '首页',
-      noCache: false
+      noCache: false,
     },
     children: [
       {
@@ -20,11 +24,12 @@ export default [
         component: 'main/index',
         meta: {
           title: '首页',
-          noCache: false
+          noCache: true
         }
       }
     ]
   },
+  // 二级菜单格式
   {
     name: '系统管理',
     path: '/system',
@@ -32,8 +37,8 @@ export default [
     component: 'Layout',
     meta: {
       icon: 'el-icon-setting',
+      title: '系统管理',
       noCache: false,
-      title: '系统管理'
     },
     children: [
       {
@@ -48,6 +53,7 @@ export default [
       }
     ]
   },
+  // 错误路径定向到首页
   {
     path: '*', 
     redirect: '/dashboard', 
