@@ -8,11 +8,7 @@
             style="border-bottom: solid 1px #f7f7f7; padding-bottom: 5px"
           >
             <div>字段设置</div>
-            <i
-              @click="setShowHeader"
-              class="el-icon-s-tools link"
-              style="font-size: 16px"
-            ></i>
+            <i @click="setShowHeader" class="el-icon-s-tools link" style="font-size: 16px"></i>
           </div>
           <div
             class="flex-between-center"
@@ -26,7 +22,7 @@
             <i
               @click="resetWidth"
               class="el-icon-refresh-left link"
-              style="font-size: 16px"
+              style="font-size: 16px;font-weight: 600"
             ></i>
           </div>
           <div class="flex-between-center" style="margin-top: 10px; margin-bottom: 10px">
@@ -55,20 +51,10 @@
     </div>
     <el-dialog title="设置" :visible.sync="show" width="650px">
       <div class="flex-center-center">
-        <el-transfer
-          :titles="['显示字段', '隐藏字段']"
-          v-model="value"
-          :data="data"
-        ></el-transfer>
+        <el-transfer :titles="['显示字段', '隐藏字段']" v-model="value" :data="data"></el-transfer>
       </div>
       <div slot="footer" class="flex-center-center">
-        <el-button
-          size="mini"
-          @click="resetDefault"
-          style="margin-right: 10px"
-          type="text"
-          >恢复默认</el-button
-        >
+        <el-button size="mini" @click="resetDefault" style="margin-right: 10px" type="text">恢复默认</el-button>
         <el-button size="mini" type="primary" @click="submit">确 认</el-button>
         <el-button size="mini" type="info" @click="show = false">取 消</el-button>
       </div>
@@ -85,7 +71,7 @@ export default {
       visible: false,
       show: false,
       data: [],
-      value: [],
+      value: []
     };
   },
   created() {
@@ -100,7 +86,7 @@ export default {
         if (typeof obj[item] !== "object") continue;
         this.data.push({
           key: item,
-          label: obj[item].label,
+          label: obj[item].label
         });
 
         if (!obj[item].show) this.value.push(item);
@@ -136,8 +122,8 @@ export default {
       localStorage.columns = JSON.stringify(currentColumns);
       this.$emit("tableRefresh");
       this.show = false;
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
