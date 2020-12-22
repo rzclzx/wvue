@@ -8,7 +8,7 @@
             style="border-bottom: solid 1px #f7f7f7; padding-bottom: 5px"
           >
             <div>字段设置</div>
-            <i @click="setShowHeader" class="el-icon-s-tools link" style="font-size: 16px"></i>
+            <i @click="setShowHeader" class="el-icon-setting link" style="font-size: 18px"></i>
           </div>
           <div
             class="flex-between-center"
@@ -22,7 +22,7 @@
             <i
               @click="resetWidth"
               class="el-icon-refresh-left link"
-              style="font-size: 16px;font-weight: 600"
+              style="font-size: 18px"
             ></i>
           </div>
           <div class="flex-between-center" style="margin-top: 10px; margin-bottom: 10px">
@@ -62,7 +62,7 @@
           </div>
         </div>
         <span slot="reference" class="link icons">
-          <i class="el-icon-s-tools" style="font-size: 16px"></i>
+          <i class="el-icon-setting" style="font-size: 18px"></i>
         </span>
       </el-popover>
     </div>
