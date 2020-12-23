@@ -1,5 +1,5 @@
 <template>
-  <div class="app-header flex-between-center">
+  <div class="app-header flex-between-center" :style="{width: `calc(100% - ${menuExpand ? 195 : 36}px)`}">
     <div class="flex-start-center">
       <el-breadcrumb separator="/" style="margin:0 20px 0 10px">
         <el-breadcrumb-item :to="{ path: '/dashboard' }">首页</el-breadcrumb-item>
@@ -34,7 +34,9 @@ export default {
     }
   },
   computed: {
-    
+    menuExpand() {
+      return this.$store.state.app.menuExpand;
+    }
   },
   created() {
     
@@ -58,7 +60,6 @@ export default {
     right:0;
     top:0;
     font-size: 12px;
-    width: calc(100% - 195px);
     height: 40px;
     color: @fontcolor;
     border-bottom: solid 1px @bordercolor;

@@ -1,6 +1,7 @@
 <template>
   <el-menu
     class="column-scroll"
+    :collapse="!menuExpand"
     :default-active="$route.path"
     :show-timeout="200"
     :unique-opened="true"
@@ -32,6 +33,9 @@ export default {
   computed: {
     menus () {
       return this.$store.state.user.menus.filter(item => !item.hidden) || [];
+    },
+    menuExpand() {
+      return this.$store.state.app.menuExpand;
     }
   },
   created() {
