@@ -4,6 +4,7 @@ import router from './router'
 import store from './store/index'
 import ElementUI from 'element-ui'
 import utils from '@/utils/utils'
+import { checkPermission } from '@/store/modules/user'
 import { bus } from '@/utils/bus'
 import name from '@/assets/config/name'
 import columnsInit from '@/assets/config/columns'
@@ -28,6 +29,8 @@ svgInit()
 Vue.component('ImgIcon', ImgIcon)
 
 Vue.prototype.$utils = utils;
+
+Vue.prototype.$checkPermission = checkPermission;
 
 Vue.prototype.$bus = bus;
 
