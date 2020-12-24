@@ -50,7 +50,27 @@ export default [
           title: '用户管理',
           noCache: false
         }
-      }
+      },
+      {
+        name: '角色管理',
+        path: 'role',
+        hidden: false,
+        component: 'system/role/index',
+        meta: {
+          title: '角色管理',
+          noCache: false
+        }
+      },
+      {
+        name: '菜单管理',
+        path: 'menu',
+        hidden: false,
+        component: 'system/menu/index',
+        meta: {
+          title: '菜单管理',
+          noCache: false
+        }
+      },
     ]
   },
   // 错误路径定向到首页

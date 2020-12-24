@@ -1,5 +1,87 @@
 // 表格信息配置项
 export const columns = {
+  menu: {
+    icon: {
+      show: true,
+      width: '',
+      label: '图标',
+      align: 'center'
+    },
+    menuSort: {
+      show: true,
+      width: '',
+      label: '排序',
+      align: 'center'
+    },
+    permission: {
+      show: true,
+      width: '',
+      label: '权限标识',
+      align: 'center'
+    },
+    component: {
+      show: true,
+      width: '',
+      label: '组件路径',
+      align: 'center'
+    },
+    iframe: {
+      show: true,
+      width: '',
+      label: '外链',
+      align: 'center'
+    },
+    cache: {
+      show: true,
+      width: '',
+      label: '缓存',
+      align: 'center'
+    },
+    hidden: {
+      show: true,
+      width: '',
+      label: '可见',
+      align: 'center'
+    },
+    createTime: {
+      show: true,
+      width: '',
+      label: '创建日期',
+      align: 'center'
+    },
+  },
+  role: {
+    name: {
+      show: true,
+      width: '',
+      label: '名称',
+      align: 'center'
+    },
+    dataScope: {
+      show: true,
+      width: '',
+      label: '数据权限',
+      align: 'center'
+    },
+    level: {
+      show: true,
+      width: '',
+      label: '角色级别',
+      align: 'center'
+    },
+    description: {
+      show: true,
+      width: '',
+      label: '描述',
+      align: 'center'
+    },
+    createTime: {
+      show: true,
+      width: '',
+      label: '创建日期',
+      align: 'center'
+    },
+  },
   user: {
     username: {
       show: true,
@@ -45,7 +127,7 @@ export const columns = {
       align: 'center',
       time: true
     },
-  }
+  },
 }
 
 const comp = (a, b) => {
