@@ -1,5 +1,13 @@
 import request from './axios/baseAxios'
 
+export function listDict(params) {
+  return request({
+    url: 'api/dict',
+    method: 'get',
+    params
+  })
+}
+
 export function add(data) {
   return request({
     url: 'api/dict',

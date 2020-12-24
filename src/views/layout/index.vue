@@ -31,6 +31,8 @@ import Main from './components/main'
 import name from '@/assets/config/name'
 import Header from './components/header/index'
 import Tags from '@/views/layout/components/tags'
+import { listDict } from '@/api/dict'
+import dicts from '@/assets/config/dict'
 export default {
   components: {
     Menu,
@@ -45,7 +47,15 @@ export default {
     }
   },
   created() {
-    
+    listDict({
+      page: 0,
+      size: 99999
+    }).then(res => {
+      let configDicts = this.$utils.clone(dicts);
+      let resDicts = res.content || [];
+      let dictList = configDicts.concat(resDicts);
+      this.$store.dispatch('setDict', dictList);
+    })
   },
   computed: {
     menuExpand() {
