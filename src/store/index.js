@@ -4,14 +4,12 @@ import Vuex from 'vuex'
 import test from './modules/test'
 import user from './modules/user'
 import app from './modules/app'
-import permissing from './modules/permissing'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
     test,
     user,
-    permissing,
     app
   }
 })

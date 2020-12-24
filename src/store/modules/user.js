@@ -1,8 +1,8 @@
 import { getInfo, logout } from '@/api/login'
 import { buildMenus } from '@/api/menu'
 import Cookies from 'js-cookie'
-import { filterAsyncRouter } from './permissing'
 import menusConfig from '@/assets/config/menu'
+import Layout from '@/views/layout/index'
 
 let state = {
   user: {},
@@ -49,6 +49,29 @@ let actions = {
       }).catch(err => reject(err));
     })
   }
+}
+
+// 遍历后台传来的路由字符串，转换为组件对象
+function filterAsyncRouter (routers) {
+  return routers.filter(router => {
+    if (router.component) {
+      if (router.component === 'Layout') {
+        // Layout组件特殊处理
+        router.component = Layout
+      } else {
+        const component = router.component
+        router.component = loadView(component)
+      }
+    }
+    if (router.children && router.children.length) {
+      router.children = filterAsyncRouter(router.children)
+    }
+    return true
+  })
+}
+
+function loadView (view) {
+  return (resolve) => require([`@/views/${view}`], resolve)
 }
 
 export default {
