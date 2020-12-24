@@ -22,3 +22,34 @@ export function edit(data) {
     data
   })
 }
+
+export function listDetail(params) {
+  return request({
+    url: 'api/dictDetail',
+    method: 'get',
+    params
+  })
+}
+
+export function addDetail(data) {
+  return request({
+    url: 'api/dict',
+    method: 'post',
+    data
+  })
+}
+
+export function delDetail(id) {
+  return request({
+    url: 'api/dict/' + id,
+    method: 'delete'
+  })
+}
+
+export function editDetail(data) {
+  return request({
+    url: 'api/dict',
+    method: 'put',
+    data
+  })
+}

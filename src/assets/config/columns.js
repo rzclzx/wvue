@@ -1,5 +1,39 @@
 // 表格信息配置项
 export const columns = {
+  dictDetail: {
+    label: {
+      show: true,
+      width: '',
+      label: '字典标签',
+      align: 'center'
+    },
+    value: {
+      show: true,
+      width: '',
+      label: '字典值',
+      align: 'center'
+    },
+    dictSort: {
+      show: true,
+      width: '',
+      label: '排序',
+      align: 'center'
+    },
+  },
+  dict: {
+    name: {
+      show: true,
+      width: '',
+      label: '名称',
+      align: 'center'
+    },
+    description: {
+      show: true,
+      width: '',
+      label: '描述',
+      align: 'center'
+    },
+  },
   menu: {
     icon: {
       show: true,

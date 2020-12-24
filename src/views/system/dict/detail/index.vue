@@ -1,36 +1,9 @@
 <template>
-  <div class="app-container">
+  <div>
     <Form ref="form" :isAdd="isAdd" />
-    <div class="head-container">
-      <div class="flex-wrap-center">
-        <div class="header-item">
-          <el-input 
-            v-model="query.blurry" 
-            size="mini" 
-            placeholder="名称"
-            @keyup.enter.native="toQuery"
-          ></el-input>
-        </div>
-        <div class="header-item">
-          <el-button 
-            size="mini" 
-            type="primary" 
-            icon="el-icon-search"
-            @click="toQuery"
-          >搜索</el-button>
-          <el-button 
-            style="margin-left:5px"
-            size="mini" 
-            icon="el-icon-refresh-left" 
-            type="info" 
-            @click="reset()"
-          >重置</el-button>
-        </div>
-      </div>
-    </div>
     <div class="table-header flex-between-center">
-      <h3 class="table-title">菜单列表</h3>
-      <div class="flex-end-center">
+      <h3 class="table-title">{{ title }}</h3>
+      <div class="flex-end-center" v-if="detail.id">
         <el-button 
           @click="add" 
           icon="el-icon-plus" 
@@ -50,17 +23,14 @@
       :cell-style="cellStyle"
       :header-cell-style="headerCellStyle"
       @header-dragend="headerDrag"
-      :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
-      row-key="id"
-      lazy
-      :load="getMenus"
     >
-      <el-table-column 
-        label="菜单标题" 
+      <el-table-column
+        type="index"
+        label="序号"
         align="center"
-        prop="title" 
-        width="130"
-      />
+        width="50"
+        :resizable="false"
+      ></el-table-column>
       <template  v-for="(item, key) in columns[prop]">
         <el-table-column
           v-if="item.show"
@@ -137,9 +107,9 @@ import initData from '@/mixins/initData'
 import TableSet from "@/components/Table/TableSet"
 import TableTrans from '@/components/Table/TableTrans'
 import Form from './form'
-import { del, get } from '@/api/menu'
+import { delDetail, listDetail } from '@/api/dict'
 export default {
-  name: 'menus',
+  props: ['detail'],
   components: {
     Form, 
     TableSet, 
@@ -148,18 +118,36 @@ export default {
   mixins: [initData],
   data() {
     return {
-      prop: 'menu'
+      prop: 'dictDetail',
+      loading: false
     }
   },
-  created() {
-    this.init();
+  watch: {
+    detail: {
+      handler () {
+        this.search();
+      },
+      deep: true
+    }
+  },
+  computed: {
+    title() {
+      return this.detail.description ? `字典详情-${this.detail.name}` : '字典详情';
+    }
   },
   methods: {
-    beforeInit() {
-      this.url = 'api/menus';
-      const sort = 'id,desc';
-      this.params = Object.assign({ page: this.page, size: this.size, sort: sort }, this.query);
-      return true;
+    search() {
+      this.loading = true;
+      listDetail({
+        dictName: this.detail.name,
+        sort: 'dictSort,asc',
+        page: this.page,
+        size: this.size
+      }).then(res => {
+        this.loading = false;
+        this.data = res.content || [];
+        this.total = res.totalElements;
+      })
     },
     add() {
       this.isAdd = true;
@@ -182,11 +170,6 @@ export default {
         });
       }).catch(err => {
         this.$refs[id].doClose();
-      })
-    },
-    getMenus(tree, treeNode, resolve) {
-      get({ pid: tree.id }).then(res => {
-        resolve(res.content)
       })
     },
   }

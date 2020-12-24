@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { add, edit } from '@/api/dict';
+import { addDetail, editDetail } from '@/api/dict';
 export default {
   props: ['isAdd'],
   created() {

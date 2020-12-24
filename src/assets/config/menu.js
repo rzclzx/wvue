@@ -71,6 +71,16 @@ export default [
           noCache: false
         }
       },
+      {
+        name: '字典管理',
+        path: 'dict',
+        hidden: false,
+        component: 'system/dict/index',
+        meta: {
+          title: '字典管理',
+          noCache: false
+        }
+      },
     ]
   },
   // 错误路径定向到首页
