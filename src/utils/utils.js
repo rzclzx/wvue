@@ -49,6 +49,17 @@ function getCascArrByKey (list, key, childKey, value, arr) {
     }
   }
 }
+// 递归遍历tree且判断是否存在children，执行传入的回调函数
+function rootCallBack(item, key, handler, reso) {
+  if (!item[key]) {
+    handler(item);
+  } else {
+    reso && reso(item);
+    item[key].forEach(val => {
+      rootCallBack(val, key, handler, reso);
+    })
+  }
+}
 // 表格根据key平铺数据
 function manyList (list, row) {
   if (!list) return '';
@@ -347,6 +358,7 @@ export default {
   getCascArrByKey: getCascArrByKey,
   getChildByKey: getChildByKey,
   getChildByDoubleKey: getChildByDoubleKey,
+  rootCallBack: rootCallBack,
   parseTime: parseTime,
   clone: clone,
   add: add,

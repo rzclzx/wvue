@@ -1,5 +1,18 @@
 <template>
   <div>
+    <el-table
+      @selection-change="handleSelectionChange"
+
+      :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
+      row-key="id"
+      lazy
+      :load="load"
+    >
+      <el-table-column
+        type="selection"
+        width="40">
+      </el-table-column>
+    </el-table>
     <!-- 权限，或关系 -->
     <div v-permission="['admin','user:edit']">权限</div>
     <!-- checkbox -->
@@ -95,14 +108,36 @@ export default {
     }
   },
   methods: {
-    handleSuccess () {
+    handleSelectionChange(value) {
+      this.selects = value;
+    },
+    load(tree, treeNode, resolve) {
+      // 后端懒加载
+      getMenus({ pid: tree.id }).then(res => {
+        resolve(res.content)
+      })
+      // 前端懒加载 :tree-props="{children: 'child', hasChildren: 'hasChild'}"
+      // table 列表数据 data 拿到后调用 下面addChild方法
+      // 放开下面 resolve(tree.children)
+      // resolve(tree.children)
+    },
+    addChild (list) {
+      list.forEach(item => {
+        this.$utils.rootCallBack(item, 'children', a =>{
+          a.hasChild = false;
+        }, b => {
+          b.hasChild = true;
+        })
+      })
+    },
+    handleSuccess() {
       this.$notify({
         title: '批量导入成功',
         type: 'success',
         duration: 2500
       })
     },
-    download () {
+    download() {
       downApi(this.params).then(result => {
         this.$utils.downloadFile(result, 'AntiCaseApply列表', 'xlsx')
       }).catch(err => {

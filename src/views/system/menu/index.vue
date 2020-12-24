@@ -191,12 +191,9 @@ export default {
       })
     },
     getMenus(tree, treeNode, resolve) {
-      const params = { pid: tree.id }
-      setTimeout(() => {
-        get(params).then(res => {
-          resolve(res.content)
-        })
-      }, 100)
+      get({ pid: tree.id }).then(res => {
+        resolve(res.content)
+      })
     },
     handleSelectionChange (value) {
       this.selects = value;
