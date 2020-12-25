@@ -60,7 +60,8 @@
     <!-- 单选 -->
     <div class="header-item">
       <el-select 
-        clearable 
+        clearable
+        filterable
         placeholder="单选"
         size="mini"
         v-model="form.item"

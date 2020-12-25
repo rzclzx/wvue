@@ -1,6 +1,6 @@
 export default [
   {
-    name: 'test',
+    name: 'enabled',
     dictDetails: [
       {
         value: true,

@@ -15,12 +15,60 @@
       label-width="90px"
       style="width: 100%"
     >
+      <el-form-item label="用户名" prop="username">
+        <el-input 
+          size="mini" 
+          v-model="form.username" 
+          style="width:250px" 
+        />
+      </el-form-item>
+      <el-form-item label="电话" prop="phone">
+        <el-input 
+          size="mini" 
+          v-model="form.phone" 
+          style="width:250px" 
+        />
+      </el-form-item>
       <el-form-item label="名称" prop="nickName">
         <el-input 
           size="mini" 
           v-model="form.nickName" 
           style="width:250px" 
         />
+      </el-form-item>
+      <el-form-item label="邮箱" prop="email">
+        <el-input 
+          size="mini" 
+          v-model="form.email" 
+          style="width:250px" 
+        />
+      </el-form-item>
+      <el-form-item label="角色岗位" prop="roles">
+        <el-select 
+          clearable
+          multiple
+          v-model="form.roles" 
+          style="width: 250px" 
+          placeholder="请选择角色"
+          value-key="id"
+        >
+          <el-option
+            v-for="item in roles"
+            :key="item.id"
+            :label="item.name"
+            :value="item"
+          >
+          </el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="状态" prop="enabled">
+        <el-radio-group v-model="form.enabled">
+          <el-radio 
+            v-for="item in dict.enabled ? dict.enabled.list : []"
+            :key="item.value"
+            :label="item.value"
+          >{{ item.label }}</el-radio>
+        </el-radio-group>
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
@@ -31,21 +79,27 @@
 </template>
 
 <script>
-import { add, edit } from '@/api/user';
+import { add, edit } from '@/api/user'
+import { getAll } from '@/api/role'
 export default {
   props: ['isAdd'],
   created() {
-    
+    getAll().then(res => {
+      this.roles = res || [];
+    })
   },
   data() {
     return {
       dialog: false,
-      form: {},
+      form: {
+        enabled: true
+      },
       rules: {
         // label: [
         //   { required: true, message: '请输入名称', trigger: 'blur' }
         // ]
-      }
+      },
+      roles: []
     }
   },
   computed: {
@@ -97,7 +151,9 @@ export default {
     resetForm () {
       this.dialog = false
       this.$refs.form.resetFields()
-      this.form = {};
+      this.form = {
+        enabled: true
+      };
     }
   }
 }

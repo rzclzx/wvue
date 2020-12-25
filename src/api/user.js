@@ -10,8 +10,9 @@ export function add(data) {
 
 export function del(id) {
   return request({
-    url: 'api/users/' + id,
-    method: 'delete'
+    url: 'api/users',
+    method: 'delete',
+    data: [id]
   })
 }
 

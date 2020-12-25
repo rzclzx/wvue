@@ -129,12 +129,6 @@ export const columns = {
       label: '名称',
       align: 'center'
     },
-    gender: {
-      show: true,
-      width: '',
-      label: '性别',
-      align: 'center'
-    },
     phone: {
       show: true,
       width: '',
@@ -147,12 +141,12 @@ export const columns = {
       label: '邮箱',
       align: 'center'
     },
-    dept: {
+    enabled: {
       show: true,
       width: '',
-      label: '部门',
+      label: '状态',
       align: 'center',
-      child: 'name'
+      time: true
     },
     createTime: {
       show: true,
